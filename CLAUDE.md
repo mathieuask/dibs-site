@@ -21,5 +21,5 @@ l'origine du site (CORS), sans jeton (verify_jwt désactivé), et limiter le dé
 
 ## Contenu à garder vrai
 La politique de confidentialité et la page de suppression décrivent le comportement du serveur : suppression des
-preuves et du profil, « Deleted player » dans les parties des autres, révocation du jeton Apple, signalements gardés
+preuves et du profil, « Deleted player » dans les parties des autres, signalements gardés
 12 mois. Toute différence côté serveur se corrige ici le même jour.
