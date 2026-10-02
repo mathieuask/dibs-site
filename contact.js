@@ -1,5 +1,5 @@
 // Le formulaire poste vers la fonction Supabase « support » : aucune adresse personnelle publiée sur le site.
-const SUPPORT_ENDPOINT = 'SUPPORT_ENDPOINT';
+const SUPPORT_ENDPOINT = 'https://dxcbvkqdpnodcqwebvcp.supabase.co/functions/v1/support';
 
 const form = document.getElementById('contact-form');
 const status = document.getElementById('status');
@@ -24,6 +24,7 @@ form.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, subject: data.subject, message, page: location.pathname }),
     });
+    if (res.status === 429) return say('Too many messages. Try again in an hour.');
     if (!res.ok) throw new Error(String(res.status));
     form.reset();
     say('Thanks, we got your message. We will answer by email.');
