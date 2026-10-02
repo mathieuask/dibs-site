@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're invited | Dibs</title>
+<meta name="description" content="A friend invited you to a game of Dibs. Get the app and join with the code.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="You're invited to a game of Dibs">
+<meta property="og:description" content="Call dibs on your friends. Join the game with the code.">
+<meta property="og:image" content="https://mathieuask.github.io/dibs-site/img/icon-512.webp">
+<script>
+  // Bandeau natif de Safari : « Open » passe le lien à l'app si elle est installée, « Get » sinon, sans boîte d'erreur.
+  (function () {
+    var c = new URLSearchParams(location.search).get('c') || '';
+    var arg = /^\d{6}$/.test(c) ? ', app-argument=dibs://join?code=' + c : '';
+    document.write('<meta name="apple-itunes-app" content="app-id=6818491717' + arg + '">');
+  })();
+</script>
+<link rel="icon" href="img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .invite { max-width: 440px; margin: 0 auto; padding: 24px 20px 48px; text-align: center; }
+  .invite .avatars { display: flex; justify-content: center; gap: 10px; margin: 16px 0 28px; }
+  .invite .avatars img { width: 64px; height: 64px; border-radius: 18px; padding: 6px; }
+  .invite h1 { font-weight: 900; font-size: 44px; line-height: 1; letter-spacing: -0.03em; }
+  .invite .lead { color: var(--text2); font-size: 18px; margin: 12px 0 28px; }
+  .code { background: var(--surface); border-radius: 24px; padding: 20px; margin-bottom: 12px; }
+  .code .label { color: var(--text2); font-weight: 800; font-size: 13px; letter-spacing: 0.08em; }
+  .code .digits { font-weight: 900; font-size: 52px; letter-spacing: 0.12em; margin: 4px 0 12px; font-variant-numeric: tabular-nums; }
+  .ghost { background: var(--surface2); color: var(--text); border: 0; font-family: inherit; cursor: pointer; height: 44px; padding: 0 20px; border-radius: 22px; font-weight: 800; font-size: 15px; }
+  .actions { display: grid; gap: 12px; margin-top: 24px; }
+  .actions .pill { width: 100%; }
+  .actions .pill.dark { background: var(--text); color: var(--bg); }
+  .steps-small { color: var(--text2); font-size: 15px; margin-top: 28px; line-height: 1.7; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="./"><img src="img/icon-192.png" alt="">Dibs</a>
+</header>
+<main class="invite">
+  <div class="avatars" aria-hidden="true">
+    <img class="y" src="img/lapin.webp" alt=""><img class="v" src="img/renard.webp" alt=""><img class="p" src="img/dino.webp" alt="">
+  </div>
+  <h1>You're invited</h1>
+  <p class="lead" id="lead">Join the game on Dibs with this code.</p>
+
+  <div class="code" id="code-box">
+    <div class="label">GAME CODE</div>
+    <div class="digits" id="digits">------</div>
+    <button class="ghost" id="copy" type="button">Copy code</button>
+  </div>
+
+  <div class="actions">
+    <a class="pill" id="open" href="dibs://join">Open in Dibs</a>
+    <a class="pill dark" href="https://apps.apple.com/app/id6818491717">Get Dibs on the App Store</a>
+  </div>
+
+  <p class="steps-small" id="steps">New to Dibs? Get the app, tap Got a code?, and enter the code above.</p>
+</main>
+<script>
+  (function () {
+    var code = new URLSearchParams(location.search).get('c') || '';
+    var valid = /^\d{6}$/.test(code);
+    var copy = document.getElementById('copy');
+    if (!valid) {
+      document.getElementById('lead').textContent = 'This invite link is missing its code. Ask your friend for the six-digit code.';
+      document.getElementById('code-box').hidden = true;
+      document.getElementById('open').hidden = true;
+      return;
+    }
+    document.getElementById('digits').textContent = code;
+    document.getElementById('open').href = 'dibs://join?code=' + code;
+    copy.addEventListener('click', function () {
+      var done = function () { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy code'; }, 2000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(done, function () { copy.textContent = code; });
+      } else {
+        copy.textContent = code;
+      }
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verrou du site : liens internes, repères non remplacés, emoji et tirets cadratins, poids. Vert = prêt à déployer.
+# Verrou du site : liens internes relatifs, repères non remplacés, emoji et tirets cadratins, poids. Vert = prêt à déployer.
 set -euo pipefail
 cd "$(dirname "$0")"
 python3 - <<'EOF'
@@ -19,10 +19,11 @@ class P(html.parser.HTMLParser):
 
 def target(ref):
     path = ref.split('#')[0].split('?')[0]
-    if path in ('', '/'): return root / 'index.html'
-    p = root / path.lstrip('/')
+    while path.startswith('./'): path = path[2:]
+    if path in ('', '.'): return root / 'index.html'
+    p = root / path
     if p.suffix: return p
-    return root / (path.lstrip('/') + '.html')
+    return root / (path + '.html')
 
 ids = {}
 parsed = {}
@@ -33,7 +34,9 @@ for page, (p, text) in parsed.items():
     for tag in ('<title>', 'name="viewport"', '<html lang="en">', 'name="description"' if page.name != '404.html' else '<title>'):
         if tag not in text: errors.append(f'{page}: manque {tag}')
     for ref in p.refs:
-        if ref.startswith(('http://', 'https://', 'mailto:')): continue
+        if ref.startswith(('http://', 'https://', 'mailto:', 'dibs://')): continue
+        if ref.startswith('/'):
+            errors.append(f'{page}: lien absolu {ref} (le site vit dans un sous-dossier sur GitHub Pages)'); continue
         if ref.startswith('#'):
             if ref[1:] not in p.ids: errors.append(f'{page}: ancre absente {ref}')
             continue
