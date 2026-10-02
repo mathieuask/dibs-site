@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support | Dibs</title>
+<meta name="description" content="Help with Dibs: how to play, Dibs+, reporting a player, deleting your account, and how to contact us.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  form { display: grid; gap: 14px; margin-top: 16px; }
+  label { font-weight: 800; font-size: 15px; display: grid; gap: 6px; }
+  input, select, textarea {
+    font: inherit; font-weight: 600; color: var(--text); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; width: 100%;
+  }
+  textarea { min-height: 160px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--violet); outline-offset: 1px; }
+  .hp { position: absolute; left: -9999px; }
+  button.pill { border: 0; cursor: pointer; font-family: inherit; justify-self: start; }
+  button.pill[disabled] { opacity: 0.5; cursor: default; }
+  #status { font-weight: 700; min-height: 24px; }
+</style>
+</head>
+<body class="doc">
+<header class="wrap top">
+  <a class="brand" href="/"><img src="/img/icon-192.png" alt="">Dibs</a>
+  <nav><a href="/privacy">Privacy</a></nav>
+</header>
+<main>
+  <h1>Support</h1>
+  <p class="meta">Answers to common questions, and a way to reach us.</p>
+
+  <div class="faq">
+    <h3>How do I play?</h3>
+    <p>Create a game, share the code with your friends or your partner, and play a card on someone. They have until the timer ends to prove it with a photo or a video. The faster they do it, the more points. In the app, tap Rules for the full list.</p>
+
+    <h3>How do I join a game?</h3>
+    <p>On Play, tap I have a code and type the six-digit code, or open the invite link your friend sent you.</p>
+
+    <h3>What are jokers?</h3>
+    <p>You get two in each game. NO U sends the card back to whoever played it. NOPE cancels it, and nobody scores.</p>
+
+    <h3>What does Dibs+ include?</h3>
+    <p>Every deck, including Spicy 18+, Date night, Long distance, Roommates and Party, 30-day games, up to 12 players and several games at once. When the host has Dibs+, everyone in the game plays with it for free.</p>
+
+    <h3>How do I cancel Dibs+?</h3>
+    <p>On your iPhone, open Settings, tap your name, then Subscriptions, then Dibs. Cancel at least 24 hours before the renewal date. For a refund, go to reportaproblem.apple.com.</p>
+
+    <h3>I bought Dibs+ but it does not show.</h3>
+    <p>In the app, open Profile and tap Restore purchases, signed in with the same Apple ID.</p>
+
+    <h3>Someone posted something they should not have.</h3>
+    <p>Press and hold the proof or the player, then tap Report or Block. We review every report. If someone is in danger, contact local emergency services first.</p>
+
+    <h3>Who can see my photos and videos?</h3>
+    <p>Only the players of the game you posted them in. Read the <a href="/privacy">Privacy Policy</a>.</p>
+
+    <h3>How do I delete my account?</h3>
+    <p>In the app: Profile, then Delete account. See <a href="/delete-account">delete your account</a>.</p>
+  </div>
+
+  <h2 id="contact">Contact us</h2>
+  <p>We answer in English or French, usually within two days.</p>
+  <form id="contact-form" novalidate>
+    <label>Your email
+      <input type="email" name="email" autocomplete="email" required maxlength="200">
+    </label>
+    <label>Topic
+      <select name="subject" required>
+        <option value="Help">Help with the game</option>
+        <option value="Dibs+">Dibs+ and purchases</option>
+        <option value="Report">Report a player or a proof</option>
+        <option value="Privacy">My data and privacy</option>
+        <option value="Delete account">Delete my account</option>
+        <option value="Other">Something else</option>
+      </select>
+    </label>
+    <label>Message
+      <textarea name="message" required maxlength="4000"></textarea>
+    </label>
+    <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+    <button class="pill" type="submit">Send</button>
+    <p id="status" role="status"></p>
+  </form>
+</main>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Dibs</span>
+    <nav><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/delete-account">Delete your account</a></nav>
+  </div>
+</footer>
+<script src="/contact.js"></script>
+</body>
+</html>
