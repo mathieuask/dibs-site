@@ -42,10 +42,11 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/j/:code",
-      "destination": "/j"
+      "destination": "/j?c=:code",
+      "permanent": false
     }
   ]
 }

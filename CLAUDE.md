@@ -16,7 +16,7 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
   ni stockage. Événements : `site_viewed`, `store_redirect` {store}, `invite_viewed`, `invite_cta` {action}, toujours
   avec `page`, `source` (`?s=`, `utm_source` ou domaine d'origine) et `device` (ios, android, desktop).
 - Lien universel : `.well-known/apple-app-site-association` (équipe 9HZ6856XDA) ouvre l'app sur `/j/*`, `/j?c=` et
-  `/app` si elle est installée ; la page ne s'affiche qu'aux autres. `vercel.json` réécrit `/j/:code` vers `/j` (avec cleanUrls, viser `j.html` donne 404).
+  `/app` si elle est installée ; la page ne s'affiche qu'aux autres. `vercel.json` redirige `/j/:code` vers `/j?c=:code` (une réécriture vers `j.html` ou `/j` donne 404 sur Vercel avec cleanUrls, testé le 07/10).
 - QR de `/app?s=qr` : `img/qr-app.svg`, généré avec le paquet `qrcode` de l'app (à refaire si le domaine change).
 
 ## Déployer
