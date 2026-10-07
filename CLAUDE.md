@@ -18,7 +18,7 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
 - Une page anglaise et sa traduction changent dans le même commit ; la version française fait foi en France.
 
 ## Liens et analytique (`go.js`)
-- `DIBS.ios` : TestFlight public tant que l'app attend Apple ; le jour de la sortie, le remplacer par `DIBS.appStore`.
+- `DIBS.ios` : fiche App Store (le lien public TestFlight a été fermé le 08/10 ; la fiche s'ouvre à la sortie).
   `DIBS.android` vide = « Android soon ». `DIBS.amplitudeKey` vide = aucun envoi.
 - Analytique : API HTTP d'Amplitude (projet Dibs, org de Sofia), un identifiant par chargement de page, aucun cookie
   ni stockage. Événements : `site_viewed`, `store_redirect` {store}, `invite_viewed`, `invite_cta` {action}, toujours

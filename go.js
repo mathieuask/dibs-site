@@ -1,7 +1,7 @@
 // Redirections vers les stores et comptage des visites, partagés par toutes les pages.
-// Tant que l'app attend l'examen Apple, l'iPhone part sur TestFlight ; à la sortie, mettre l'URL App Store.
+// L'iPhone part sur la fiche App Store (le lien public TestFlight est fermé depuis le 08/10).
 var DIBS = {
-  ios: 'https://testflight.apple.com/join/5t5MherJ',
+  ios: 'https://apps.apple.com/app/id6818491717',
   appStore: 'https://apps.apple.com/app/id6818491717',
   android: '',
   amplitudeKey: '714c457181a563948cb6208c09b9fdf6'
