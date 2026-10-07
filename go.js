@@ -4,7 +4,7 @@ var DIBS = {
   ios: 'https://testflight.apple.com/join/5t5MherJ',
   appStore: 'https://apps.apple.com/app/id6818491717',
   android: '',
-  amplitudeKey: ''
+  amplitudeKey: '714c457181a563948cb6208c09b9fdf6'
 };
 
 DIBS.platform = (function () {
