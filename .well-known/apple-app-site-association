@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["9HZ6856XDA.com.mathieuaskamp.dibs"],
+        "components": [
+          { "/": "/j/*", "comment": "Game invite" },
+          { "/": "/j", "?": { "c": "??????" }, "comment": "Old game invite format" },
+          { "/": "/app", "comment": "Get the app link" }
+        ]
+      }
+    ]
+  }
+}

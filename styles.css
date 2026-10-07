@@ -19,7 +19,7 @@ body {
 }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
 
 /* En-tête */
 .top { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
@@ -43,11 +43,18 @@ img { display: block; max-width: 100%; }
 .hero h1 { font-weight: 900; font-size: clamp(44px, 7vw, 76px); line-height: 0.98; letter-spacing: -0.035em; }
 .hero p.lead { color: var(--text2); font-size: 20px; margin: 20px 0 32px; max-width: 30ch; }
 .hero .small { color: var(--text2); font-size: 14px; margin-top: 14px; }
-.phone { position: relative; justify-self: center; width: min(320px, 78vw); }
-.phone img.screen { border-radius: 44px; border: 8px solid #1c1c1c; }
-.phone .sticker { position: absolute; width: 96px; height: 96px; border-radius: 26px; padding: 8px; }
-.phone .s1 { background: var(--violet); left: -48px; top: 44%; transform: rotate(-8deg); }
-.phone .s2 { background: var(--pink); right: -40px; bottom: 120px; transform: rotate(7deg); }
+/* Le téléphone tient dans la hauteur de l'écran (capture 603 x 1311) : le bouton reste visible sur un portable. */
+.phone { position: relative; justify-self: center; width: min(320px, 78vw, calc((100svh - 150px) * 0.45)); }
+.phone img.screen { width: 100%; height: auto; border-radius: 44px; border: 8px solid #1c1c1c; }
+.phone .sticker { position: absolute; width: 30%; height: auto; aspect-ratio: 1; border-radius: 26%; padding: 2.5%; }
+.phone .s1 { background: var(--violet); left: -15%; top: 44%; transform: rotate(-8deg); }
+.phone .s2 { background: var(--pink); right: -12%; bottom: 18%; transform: rotate(7deg); }
+
+.hero .ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.hero-qr { display: flex; align-items: center; gap: 12px; color: var(--text2); font-size: 14px; font-weight: 700; line-height: 1.3; }
+.hero-qr img { width: 72px; height: 72px; background: #fff; padding: 6px; border-radius: 12px; }
+/* Un QR ne sert qu'à l'écran d'un ordinateur : masqué sur téléphone et tablette. */
+@media (hover: none), (pointer: coarse) { .hero-qr { display: none; } }
 
 h2 { font-weight: 900; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 28px; }
 section { padding-block: 48px; }
@@ -81,6 +88,16 @@ footer nav { display: flex; flex-wrap: wrap; gap: 12px 20px; }
 footer a { text-decoration: none; font-weight: 700; }
 footer a:hover { color: var(--text); }
 
+/* Pages courtes centrées (invitation, redirection vers le store) */
+.center { max-width: 440px; margin: 0 auto; padding: 24px 20px 48px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.center h1 { font-weight: 900; font-size: clamp(36px, 11vw, 44px); line-height: 1; letter-spacing: -0.03em; }
+.center .lead { color: var(--text2); font-size: 18px; margin: 12px 0 28px; }
+.avatars-row { display: flex; justify-content: center; gap: 10px; margin: 16px 0 28px; }
+.avatars-row img { width: 64px; height: 64px; border-radius: 18px; padding: 6px; }
+.qr { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 8px 0 24px; color: var(--text2); font-weight: 700; font-size: 15px; }
+.qr img { background: #fff; padding: 12px; border-radius: 20px; box-sizing: content-box; }
+[hidden] { display: none !important; }
+
 /* Pages de texte (confidentialité, conditions, support, suppression) */
 .doc main { max-width: 720px; margin: 0 auto; padding: 24px 20px 40px; }
 .doc h1 { font-weight: 900; font-size: clamp(36px, 6vw, 52px); line-height: 1; letter-spacing: -0.03em; margin: 24px 0 8px; }
@@ -103,6 +120,8 @@ footer a:hover { color: var(--text); }
   .tile { min-height: 0; }
   .tile h3 { margin-top: 24px; }
   .promise { grid-template-columns: 1fr; padding: 28px 24px; }
-  .phone .s1 { left: -24px; } .phone .s2 { right: -16px; }
+  .phone { width: min(300px, 72vw); }
+  .phone .s1 { left: -8%; } .phone .s2 { right: -6%; }
+  .hero-qr { display: none; }
   .top nav { gap: 14px; }
 }

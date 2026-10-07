@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verrou du site : liens internes relatifs, repères non remplacés, emoji et tirets cadratins, poids. Vert = prêt à déployer.
+# Verrou du site : liens internes (relatifs ou depuis la racine, le site vit à la racine sur Vercel), repères non remplacés, emoji et tirets cadratins, poids. Vert = prêt à déployer.
 set -euo pipefail
 cd "$(dirname "$0")"
 python3 - <<'EOF'
@@ -18,7 +18,7 @@ class P(html.parser.HTMLParser):
             if a.get(k): self.refs.append(a[k])
 
 def target(ref):
-    path = ref.split('#')[0].split('?')[0]
+    path = ref.split('#')[0].split('?')[0].lstrip('/')
     while path.startswith('./'): path = path[2:]
     if path in ('', '.'): return root / 'index.html'
     p = root / path
@@ -35,8 +35,6 @@ for page, (p, text) in parsed.items():
         if tag not in text: errors.append(f'{page}: manque {tag}')
     for ref in p.refs:
         if ref.startswith(('http://', 'https://', 'mailto:', 'dibs://')): continue
-        if ref.startswith('/'):
-            errors.append(f'{page}: lien absolu {ref} (le site vit dans un sous-dossier sur GitHub Pages)'); continue
         if ref.startswith('#'):
             if ref[1:] not in p.ids: errors.append(f'{page}: ancre absente {ref}')
             continue
@@ -50,6 +48,15 @@ for page, (p, text) in parsed.items():
 for f in list(root.glob('*.js')) + pages:
     t = f.read_text()
     if re.search(r"'SUPPORT_ENDPOINT'|SUPPORT_EMAIL", t): errors.append(f'{f}: repère SUPPORT_ENDPOINT ou SUPPORT_EMAIL non remplacé')
+
+# Lien universel : le fichier lu par iOS doit rester un JSON valide qui nomme l'app.
+import json
+try:
+    aasa = json.loads((root / '.well-known/apple-app-site-association').read_text())
+    ids = [i for d in aasa['applinks']['details'] for i in d['appIDs']]
+    if '9HZ6856XDA.com.mathieuaskamp.dibs' not in ids: errors.append('apple-app-site-association : appID absent')
+except Exception as e:
+    errors.append(f'apple-app-site-association illisible : {e}')
 
 size = sum(f.stat().st_size for f in root.rglob('*') if f.is_file() and '.git' not in f.parts)
 if size > 2_000_000: errors.append(f'site trop lourd : {size} octets')

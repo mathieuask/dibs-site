@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Dibs</title>
+<meta name="description" content="Get Dibs, the card game you play on your friends or your partner.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Get Dibs">
+<meta property="og:description" content="Call dibs on your friends. Play a card, they prove it on video.">
+<meta property="og:image" content="https://playdibs.vercel.app/img/icon-512.webp">
+<meta name="theme-color" content="#000000">
+<meta name="apple-itunes-app" content="app-id=6818491717">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/go.js"></script>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="/"><img src="/img/icon-192.png" alt="">Dibs</a>
+</header>
+<main class="center">
+  <div class="avatars-row" aria-hidden="true">
+    <img class="y" src="/img/lapin.webp" alt=""><img class="v" src="/img/renard.webp" alt=""><img class="p" src="/img/dino.webp" alt="">
+  </div>
+  <h1 id="title">Opening the App Store</h1>
+  <p class="lead" id="lead">One second.</p>
+  <div class="qr" id="qr" hidden>
+    <img src="/img/qr-app.svg" width="180" height="180" alt="QR code to get Dibs on your iPhone">
+    <p>Scan with your iPhone camera</p>
+  </div>
+  <a class="pill" id="store" href="https://apps.apple.com/app/id6818491717">Get Dibs</a>
+</main>
+<script>
+  (function () {
+    var store = document.getElementById('store');
+    var title = document.getElementById('title');
+    var lead = document.getElementById('lead');
+    store.href = DIBS.storeUrl();
+    if (DIBS.platform === 'ios') {
+      DIBS.go(DIBS.ios, 'store_redirect', { store: DIBS.storeName() });
+      return;
+    }
+    if (DIBS.platform === 'android' && DIBS.android) {
+      title.textContent = 'Opening Google Play';
+      DIBS.go(DIBS.android, 'store_redirect', { store: 'play' });
+      return;
+    }
+    if (DIBS.platform === 'android') {
+      title.textContent = 'Dibs is on iPhone for now';
+      lead.textContent = 'Android is coming. Your friends on iPhone can already play.';
+      store.hidden = true;
+      DIBS.track('store_redirect', { store: 'none' });
+      return;
+    }
+    title.textContent = 'Get Dibs on your iPhone';
+    lead.textContent = 'Dibs is a phone game. Scan this code, or open this page on your iPhone.';
+    document.getElementById('qr').hidden = false;
+    store.textContent = 'Open the App Store';
+    DIBS.track('store_redirect', { store: 'qr_shown' });
+  })();
+</script>
+</body>
+</html>

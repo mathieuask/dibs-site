@@ -1,6 +1,7 @@
 # Site Dibs (statique, Vercel)
 
-Pages : accueil, privacy, terms, support (FAQ et formulaire), delete-account, 404. HTML et CSS à la main, aucune
+En ligne : https://playdibs.vercel.app (projet Vercel `playdibs`). Pages : accueil, privacy, terms, support (FAQ et
+formulaire), delete-account, 404, `/app` (lien de bio : envoie chaque téléphone sur son store), `/j/CODE` (invitation). HTML et CSS à la main, aucune
 dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en anglais US, sans emoji ni tiret cadratin.
 
 ## Harnais
@@ -8,12 +9,24 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
   cadratins, poids < 2 Mo. Vert obligatoire avant tout déploiement.
 - Aperçu local : configuration « site » de `~/Desktop/ember/.claude/launch.json` (port 8840, URL propres comme Vercel).
 
+## Liens et analytique (`go.js`)
+- `DIBS.ios` : TestFlight public tant que l'app attend Apple ; le jour de la sortie, le remplacer par `DIBS.appStore`.
+  `DIBS.android` vide = « Android soon ». `DIBS.amplitudeKey` vide = aucun envoi.
+- Analytique : API HTTP d'Amplitude (projet Dibs, org de Sofia), un identifiant par chargement de page, aucun cookie
+  ni stockage. Événements : `site_viewed`, `store_redirect` {store}, `invite_viewed`, `invite_cta` {action}, toujours
+  avec `page`, `source` (`?s=`, `utm_source` ou domaine d'origine) et `device` (ios, android, desktop).
+- Lien universel : `.well-known/apple-app-site-association` (équipe 9HZ6856XDA) ouvre l'app sur `/j/*`, `/j?c=` et
+  `/app` si elle est installée ; la page ne s'affiche qu'aux autres. `vercel.json` réécrit `/j/:code` vers `j.html`.
+- QR de `/app?s=qr` : `img/qr-app.svg`, généré avec le paquet `qrcode` de l'app (à refaire si le domaine change).
+
 ## Déployer
 1. Remplacer le repère par l'URL de la fonction Supabase « support » :
    `sed -i '' "s#'SUPPORT_ENDPOINT'#'https://<ref>.supabase.co/functions/v1/support'#" contact.js`
 2. `./verify.sh`
-3. `npx vercel@latest deploy --prod --yes` depuis ce dossier (après `npx vercel@latest login`), ou le connecteur
-   Vercel avec les fichiers listés par `git ls-files`.
+3. Le connecteur Vercel refuse la création et l'envoi (403) : on envoie depuis la session Vercel de Chrome
+   (`fetch('/api/v13/deployments?teamId=team_sQifnHccwlfcSHCCAjGXid87', { method: 'POST' ... })`, fichiers de
+   `git ls-files` sauf CLAUDE.md et verify.sh, `name: 'playdibs'`, `target: 'production'`), ou
+   `npx vercel@latest deploy --prod --yes` après `npx vercel@latest login`.
 
 ## Contrat du formulaire
 POST JSON `{ email, subject, message, page }` vers la fonction ; réponse 2xx si reçu. La fonction doit accepter
