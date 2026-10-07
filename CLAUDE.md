@@ -9,6 +9,14 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
   cadratins, poids < 2 Mo. Vert obligatoire avant tout déploiement.
 - Aperçu local : configuration « site » de `~/Desktop/ember/.claude/launch.json` (port 8840, URL propres comme Vercel).
 
+## Français
+- Pages françaises dans `fr/` (accueil, aide, suppression, confidentialité, conditions), liens depuis la racine
+  (`/fr/privacy`, `/img/...`). `/app` et `/j` sont communes : chaque texte porte sa version dans `data-fr`, et
+  `DIBS.t(en, fr)` pour les textes posés en JavaScript.
+- Langue (`DIBS.lang` dans `go.js`) : chemin `/fr`, puis `?lang=`, puis le choix gardé (lien « Français » / « English »,
+  `data-lang`), puis la langue du téléphone. L'accueil anglais renvoie vers `/fr` un navigateur en français.
+- Une page anglaise et sa traduction changent dans le même commit ; la version française fait foi en France.
+
 ## Liens et analytique (`go.js`)
 - `DIBS.ios` : TestFlight public tant que l'app attend Apple ; le jour de la sortie, le remplacer par `DIBS.appStore`.
   `DIBS.android` vide = « Android soon ». `DIBS.amplitudeKey` vide = aucun envoi.

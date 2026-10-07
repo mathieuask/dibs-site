@@ -31,15 +31,16 @@
   <div class="avatars-row" aria-hidden="true">
     <img class="y" src="/img/lapin.webp" alt=""><img class="v" src="/img/renard.webp" alt=""><img class="p" src="/img/dino.webp" alt="">
   </div>
-  <h1 id="title">Opening the App Store</h1>
-  <p class="lead" id="lead">One second.</p>
+  <h1 id="title" data-fr="Ouverture de l'App Store">Opening the App Store</h1>
+  <p class="lead" id="lead" data-fr="Une seconde.">One second.</p>
   <div class="qr" id="qr" hidden>
     <img src="/img/qr-app.svg" width="180" height="180" alt="QR code to get Dibs on your iPhone">
-    <p>Scan with your iPhone camera</p>
+    <p data-fr="Scannez avec l'appareil photo de votre iPhone">Scan with your iPhone camera</p>
   </div>
-  <a class="pill" id="store" href="https://apps.apple.com/app/id6818491717">Get Dibs</a>
+  <a class="pill" id="store" href="https://apps.apple.com/app/id6818491717" data-fr="Télécharger Dibs">Get Dibs</a>
 </main>
 <script>
+  DIBS.translate();
   (function () {
     var store = document.getElementById('store');
     var title = document.getElementById('title');
@@ -50,21 +51,21 @@
       return;
     }
     if (DIBS.platform === 'android' && DIBS.android) {
-      title.textContent = 'Opening Google Play';
+      title.textContent = DIBS.t('Opening Google Play', 'Ouverture de Google Play');
       DIBS.go(DIBS.android, 'store_redirect', { store: 'play' });
       return;
     }
     if (DIBS.platform === 'android') {
-      title.textContent = 'Dibs is on iPhone for now';
-      lead.textContent = 'Android is coming. Your friends on iPhone can already play.';
+      title.textContent = DIBS.t('Dibs is on iPhone for now', 'Dibs est sur iPhone pour l\'instant');
+      lead.textContent = DIBS.t('Android is coming. Your friends on iPhone can already play.', 'Android arrive. Vos amis sur iPhone peuvent déjà jouer.');
       store.hidden = true;
       DIBS.track('store_redirect', { store: 'none' });
       return;
     }
-    title.textContent = 'Get Dibs on your iPhone';
-    lead.textContent = 'Dibs is a phone game. Scan this code, or open this page on your iPhone.';
+    title.textContent = DIBS.t('Get Dibs on your iPhone', 'Téléchargez Dibs sur votre iPhone');
+    lead.textContent = DIBS.t('Dibs is a phone game. Scan this code, or open this page on your iPhone.', 'Dibs se joue sur téléphone. Scannez ce code, ou ouvrez cette page sur votre iPhone.');
     document.getElementById('qr').hidden = false;
-    store.textContent = 'Open the App Store';
+    store.textContent = DIBS.t('Open the App Store', 'Ouvrir l\'App Store');
     DIBS.track('store_redirect', { store: 'qr_shown' });
   })();
 </script>

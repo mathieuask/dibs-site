@@ -21,6 +21,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="go.js"></script>
+<script>
+  // Téléphone ou navigateur en français : la page française, sauf si « English » a été choisi.
+  if (DIBS.lang === 'fr' && (location.pathname === '/' || location.pathname === '/index.html')) location.replace('/fr' + location.search);
+</script>
 </head>
 <body>
 <header class="wrap top">
@@ -85,7 +89,7 @@
     <div class="promise">
       <div>
         <h2>Proofs stay in the game.</h2>
-        <p>Only the players of your game see your photos and videos. No public feed, no followers, no ads. Dibs is for adults 18 and over.</p>
+        <p>Only the players of your game see your photos and videos. No public feed, no followers, no ads. Dibs is for ages 13 and up; the Spicy pack is for 18 and over.</p>
       </div>
       <div class="avatars" aria-hidden="true">
         <img class="y" src="img/lapin.webp" alt=""><img class="v" src="img/alien.webp" alt=""><img class="p" src="img/grenouille.webp" alt="">
@@ -103,7 +107,7 @@
 <footer>
   <div class="wrap">
     <span>&copy; 2026 Dibs</span>
-    <nav><a href="privacy">Privacy</a><a href="terms">Terms</a><a href="support">Support</a><a href="delete-account">Delete your account</a></nav>
+    <nav><a href="privacy">Privacy</a><a href="terms">Terms</a><a href="support">Support</a><a href="delete-account">Delete your account</a><a href="/fr" data-lang="fr">Français</a></nav>
   </div>
 </footer>
 <script>

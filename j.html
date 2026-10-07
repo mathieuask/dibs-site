@@ -46,34 +46,35 @@
   <div class="avatars-row" aria-hidden="true">
     <img class="y" src="/img/lapin.webp" alt=""><img class="v" src="/img/renard.webp" alt=""><img class="p" src="/img/dino.webp" alt="">
   </div>
-  <h1>You're invited</h1>
-  <p class="lead" id="lead">Join the game on Dibs with this code.</p>
+  <h1 data-fr="Vous êtes invité">You're invited</h1>
+  <p class="lead" id="lead" data-fr="Rejoignez la partie sur Dibs avec ce code.">Join the game on Dibs with this code.</p>
 
   <div class="code" id="code-box">
-    <div class="label">GAME CODE</div>
+    <div class="label" data-fr="CODE DE LA PARTIE">GAME CODE</div>
     <div class="digits" id="digits">------</div>
-    <button class="ghost" id="copy" type="button">Copy code</button>
+    <button class="ghost" id="copy" type="button" data-fr="Copier le code">Copy code</button>
   </div>
 
   <div class="actions" id="actions">
-    <button class="pill" id="get" type="button">Get Dibs and join</button>
+    <button class="pill" id="get" type="button" data-fr="Télécharger Dibs et rejoindre">Get Dibs and join</button>
   </div>
-  <a class="open" id="open" href="dibs://join">I already have Dibs</a>
-  <p class="steps-small" id="steps">The code is copied for you. Once Dibs is installed, tap Got a code? then Paste.</p>
+  <a class="open" id="open" href="dibs://join" data-fr="J'ai déjà Dibs">I already have Dibs</a>
+  <p class="steps-small" id="steps" data-fr="Le code est copié pour vous. Une fois Dibs installé, entrez un code puis collez-le.">The code is copied for you. Once Dibs is installed, tap Got a code? then Paste.</p>
   <div class="qr" id="qr" hidden>
     <img src="/img/qr-app.svg" width="160" height="160" alt="QR code to get Dibs on your iPhone">
-    <p>Scan to get Dibs, then enter the code above</p>
+    <p data-fr="Scannez pour télécharger Dibs, puis entrez le code ci-dessus">Scan to get Dibs, then enter the code above</p>
   </div>
 </main>
 <script>
   (function () {
+    DIBS.translate();
     var code = DIBS.code;
     var $ = function (id) { return document.getElementById(id); };
     DIBS.track('invite_viewed', { has_code: !!code });
     if (!code) {
-      $('lead').textContent = 'This invite link is missing its code. Ask your friend for the six-digit code.';
+      $('lead').textContent = DIBS.t('This invite link is missing its code. Ask your friend for the six-digit code.', 'Il manque le code dans ce lien. Demandez le code à six chiffres à votre ami.');
       $('code-box').hidden = true; $('open').hidden = true;
-      $('steps').textContent = 'New to Dibs? Get the app, tap Got a code? and enter the code.';
+      $('steps').textContent = DIBS.t('New to Dibs? Get the app, tap Got a code? and enter the code.', 'Nouveau sur Dibs ? Téléchargez l\'app et entrez le code.');
     } else {
       $('digits').textContent = code;
       $('open').href = 'dibs://join?code=' + code;
@@ -84,8 +85,8 @@
     };
     $('copy').addEventListener('click', function () {
       copy().then(function (ok) {
-        $('copy').textContent = ok ? 'Copied' : code;
-        setTimeout(function () { $('copy').textContent = 'Copy code'; }, 2000);
+        $('copy').textContent = ok ? DIBS.t('Copied', 'Copié') : code;
+        setTimeout(function () { $('copy').textContent = DIBS.t('Copy code', 'Copier le code'); }, 2000);
       });
       DIBS.track('invite_cta', { action: 'copy_code' });
     });
@@ -96,7 +97,7 @@
     });
     if (DIBS.platform === 'android' && !DIBS.android) {
       $('actions').hidden = true; $('open').hidden = true;
-      $('steps').textContent = 'Dibs is on iPhone for now. Android is coming.';
+      $('steps').textContent = DIBS.t('Dibs is on iPhone for now. Android is coming.', 'Dibs est sur iPhone pour l\'instant. Android arrive.');
     }
     if (DIBS.platform === 'desktop') {
       $('actions').hidden = true; $('open').hidden = true; $('steps').hidden = true;

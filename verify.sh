@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 python3 - <<'EOF'
 import re, sys, pathlib, html.parser
 root = pathlib.Path('.')
-pages = sorted(root.glob('*.html'))
+pages = sorted(root.glob('*.html')) + sorted(root.glob('fr/*.html'))
 errors = []
 
 class P(html.parser.HTMLParser):
@@ -23,15 +23,18 @@ def target(ref):
     if path in ('', '.'): return root / 'index.html'
     p = root / path
     if p.suffix: return p
+    if (p / 'index.html').exists(): return p / 'index.html'
     return root / (path + '.html')
 
 ids = {}
 parsed = {}
+# Les liens relatifs d'une page de fr/ partent de fr/ ; les pages françaises utilisent des liens depuis la racine.
 for page in pages:
     text = page.read_text()
-    p = P(); p.feed(text); parsed[page] = (p, text); ids[page.name] = p.ids
+    p = P(); p.feed(text); parsed[page] = (p, text); ids[page.as_posix()] = p.ids
 for page, (p, text) in parsed.items():
-    for tag in ('<title>', 'name="viewport"', '<html lang="en">', 'name="description"' if page.name != '404.html' else '<title>'):
+    lang = '<html lang="fr">' if page.parts[0] == 'fr' else '<html lang="en">'
+    for tag in ('<title>', 'name="viewport"', lang, 'name="description"' if page.name != '404.html' else '<title>'):
         if tag not in text: errors.append(f'{page}: manque {tag}')
     for ref in p.refs:
         if ref.startswith(('http://', 'https://', 'mailto:', 'dibs://')): continue
@@ -40,7 +43,7 @@ for page, (p, text) in parsed.items():
             continue
         t = target(ref)
         if not t.exists(): errors.append(f'{page}: lien mort {ref}')
-        elif '#' in ref and ref.split('#')[1] not in ids.get(t.name, set()):
+        elif '#' in ref and ref.split('#')[1] not in ids.get(t.as_posix(), set()):
             errors.append(f'{page}: ancre absente {ref}')
     if '—' in text: errors.append(f'{page}: tiret cadratin')
     if re.search('[\U0001F300-\U0001FAFF☀-➿]', text): errors.append(f'{page}: emoji')

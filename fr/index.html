@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>
+  // Ancienne adresse (GitHub Pages, partagée par les builds jusqu'à la 18) : même page sur le nouveau site.
+  if (location.hostname.slice(-9) === 'github.io') location.replace('https://playdibs.vercel.app' + location.pathname.replace(/^\/dibs-site/, '').replace(/\.html$/, '') + location.search);
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dibs : lancez des gages à vos amis</title>
+<meta name="description" content="Dibs est un jeu de cartes qui se joue sur vos amis ou votre moitié. Jouez une carte, il la fait et la prouve en photo ou en vidéo. Le plus de points gagne.">
+<meta property="og:title" content="Dibs : lancez des gages à vos amis">
+<meta property="og:description" content="Jouez une carte sur un ami. Il la fait et la prouve en vidéo. Le plus de points gagne.">
+<meta property="og:image" content="/img/icon-512.webp">
+<meta name="theme-color" content="#000000">
+<meta name="apple-itunes-app" content="app-id=6818491717">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/go.js"></script>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="/fr"><img src="/img/icon-192.png" alt="">Dibs</a>
+  <nav><a href="#how">Comment ça marche</a><a href="/fr/support">Aide</a></nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Lancez des gages à vos amis.</h1>
+      <p class="lead">Jouez une carte sur un ami ou votre moitié. Il la fait et la prouve en photo ou en vidéo. Le plus de points gagne.</p>
+      <div class="ctas">
+        <a class="pill get" href="/app?s=site-fr">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.3-3.5ZM14.2 6.13c.6-.73 1-1.74.9-2.75-.86.04-1.91.58-2.53 1.3-.55.64-1.04 1.67-.91 2.66.96.07 1.94-.49 2.54-1.21Z"/></svg>
+          <span>Télécharger dans l'App Store</span>
+        </a>
+        <div class="hero-qr"><img src="/img/qr-app.svg" alt="QR code pour télécharger Dibs sur iPhone">Scannez avec<br>votre iPhone</div>
+      </div>
+      <p class="small">Gratuit. Dibs+ débloque tous les decks : 3 jours gratuits, puis 5,99 € par semaine ou 34,99 € par an en France, ou le prix local affiché dans l'App Store. Seul l'hôte en a besoin.</p>
+    </div>
+    <div class="phone">
+      <img class="screen" src="/img/app-cards.webp" width="603" height="1311" alt="L'écran Your cards de Dibs, avec des cartes comme you doing the dishes et the movie tonight">
+      <img class="sticker s1" src="/img/renard.webp" alt="">
+      <img class="sticker s2" src="/img/dino.webp" alt="">
+    </div>
+  </div>
+
+  <section id="how" class="wrap">
+    <h2>Comment ça marche</h2>
+    <div class="steps">
+      <div class="tile y"><span class="n">1</span><div><h3>Jouez une carte</h3><p>Tes frites. Un pas de danse. Choisissez un ami et envoyez-lui la carte.</p></div></div>
+      <div class="tile v"><span class="n">2</span><div><h3>Il la prouve</h3><p>Une photo ou une vidéo avant la fin du chrono. Plus c'est rapide, plus ça rapporte.</p></div></div>
+      <div class="tile p"><span class="n">3</span><div><h3>Gagnez la partie</h3><p>Ce soir, 7 jours ou 30 jours. Deux jokers chacun : NO U renvoie la carte, NOPE l'annule.</p></div></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Jouez avec vos proches</h2>
+    <div class="groups">
+      <div class="group y"><div><span>Couple</span><small>Petites victoires, grands fous rires.</small></div><div class="mini"><b>DIBS SUR</b>un slow dans la cuisine</div></div>
+      <div class="group v"><div><span>Amis</span><small>Des gages pour toute la bande.</small></div><div class="mini"><b>DIBS SUR</b>tes frites</div></div>
+      <div class="group p"><div><span>Famille</span><small>Trajets, télécommande, règles.</small></div><div class="mini"><b>DIBS SUR</b>la télécommande</div></div>
+    </div>
+  </section>
+
+  <section class="wrap packs">
+    <div>
+      <h2>Un pack pour chaque soirée.</h2>
+      <p class="lead">22 packs en plus des decks gratuits. Choisissez-en un ou mélangez-en plusieurs pour votre partie.</p>
+      <div class="chips">
+        <span class="chip v">Halloween</span><span class="chip p">Spicy</span><span class="chip y">Date night</span><span class="chip b">Real talk</span>
+        <span class="chip y">In public</span><span class="chip b">Party</span><span class="chip p">Girls night</span><span class="chip b">Boys night</span>
+        <span class="chip p">Roommates</span><span class="chip y">Road trip</span><span class="chip y">Kids vs Parents</span><span class="chip b">Holidays</span>
+      </div>
+      <p class="small">Halloween est gratuit jusqu'au 2 novembre. Tous les autres packs viennent avec Dibs+.</p>
+    </div>
+    <div class="phone"><img class="screen" src="/img/app-packs.webp" width="603" height="1311" alt="L'écran Pick your packs de Dibs, avec le deck Friends et les packs Halloween, In public, Party et Girls night"></div>
+  </section>
+
+  <section class="wrap">
+    <div class="promise">
+      <div>
+        <h2>Les preuves restent dans la partie.</h2>
+        <p>Seuls les joueurs de votre partie voient vos photos et vos vidéos. Pas de fil public, pas d'abonnés, pas de pub. Dibs se joue dès 13 ans ; le pack Spicy est réservé aux 18 ans et plus.</p>
+      </div>
+      <div class="avatars" aria-hidden="true">
+        <img class="y" src="/img/lapin.webp" alt=""><img class="v" src="/img/alien.webp" alt=""><img class="p" src="/img/grenouille.webp" alt="">
+        <img class="b" src="/img/pingouin.webp" alt=""><img class="y" src="/img/dino.webp" alt=""><img class="v" src="/img/renard.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cta">
+    <h2>Le prochain trajet, c'est pour moi.</h2>
+    <a class="pill get" href="/app?s=site-fr-bottom"><span>Télécharger Dibs dans l'App Store</span></a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Dibs</span>
+    <nav><a href="/fr/privacy">Confidentialité</a><a href="/fr/terms">Conditions</a><a href="/fr/support">Aide</a><a href="/fr/delete-account">Supprimer votre compte</a><a href="/?lang=en" data-lang="en">English</a></nav>
+  </div>
+</footer>
+<script>
+  DIBS.track('site_viewed');
+  if (DIBS.platform === 'android' && !DIBS.android) {
+    document.querySelectorAll('.pill.get span').forEach(function (e) { e.textContent = 'Sur iPhone maintenant, Android bientôt'; });
+  }
+</script>
+</body>
+</html>
