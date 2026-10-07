@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+  // Ancienne adresse (GitHub Pages, partagée par les builds jusqu'à la 18) : même page sur le nouveau site.
+  if (location.hostname.slice(-9) === 'github.io') location.replace('https://playdibs.vercel.app' + location.pathname.replace(/^\/dibs-site/, '').replace(/\.html$/, '') + location.search);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support | Dibs</title>
 <meta name="description" content="Help with Dibs: how to play, Dibs+, reporting a player, deleting your account, and how to contact us.">

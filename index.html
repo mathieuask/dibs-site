@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+  // Ancienne adresse (GitHub Pages, partagée par les builds jusqu'à la 18) : même page sur le nouveau site.
+  if (location.hostname.slice(-9) === 'github.io') location.replace('https://playdibs.vercel.app' + location.pathname.replace(/^\/dibs-site/, '').replace(/\.html$/, '') + location.search);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dibs: call dibs on your friends</title>
 <meta name="description" content="Dibs is a card game you play on your friends or your partner. Play a card, they do it and prove it with a photo or a video. Most points wins.">
