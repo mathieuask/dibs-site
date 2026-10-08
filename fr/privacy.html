@@ -41,7 +41,7 @@
     <tr><td>Données de jeu : parties créées ou rejointes, codes d'invitation, cartes jouées et reçues, réponses, chronos, jokers, points, réactions.</td><td>Faire tourner le jeu et tenir les scores.</td></tr>
     <tr><td>Preuves : les photos et les vidéos que vous prenez ou choisissez pour prouver une carte.</td><td>Montrer aux joueurs de la partie que vous l'avez fait.</td></tr>
     <tr><td>Notifications : un jeton de notification pour votre appareil et vos choix de notifications.</td><td>Vous prévenir quand une carte vous vise ou qu'un chrono va finir.</td></tr>
-    <tr><td>Achats : si vous avez Dibs+ et quand il se renouvelle ou s'arrête. Apple gère le paiement ; nous ne voyons jamais votre carte bancaire.</td><td>Débloquer Dibs+ pour vous et les joueurs de vos parties.</td></tr>
+    <tr><td>Achats : si vous avez Dibs+ et quand il se renouvelle ou s'arrête. Apple ou Google Play gère le paiement ; nous ne voyons jamais votre carte bancaire.</td><td>Débloquer Dibs+ pour vous et les joueurs de vos parties.</td></tr>
     <tr><td>Sécurité : les signalements que vous envoyez et les joueurs que vous bloquez.</td><td>Examiner les abus et garder les parties sûres.</td></tr>
     <tr><td>Analytique d'usage : les écrans que vous ouvrez et ce que vous faites dans le jeu (par exemple une partie créée, une carte jouée, une preuve envoyée), avec votre identifiant de compte, votre tranche d'âge (jamais votre date de naissance), la façon dont vous avez connu Dibs, le modèle de l'appareil et la version de l'app. Active par défaut. Pour vous y opposer, écrivez-nous par le <a href="/fr/support#contact">formulaire de contact</a> : nous arrêtons alors la collecte pour votre compte et supprimons vos données d'usage chez Amplitude. Jamais votre nom, votre e-mail, vos photos, vos vidéos ou vos messages. Sur ce site : pages vues et boutons touchés, avec un pays approximatif et sans cookie.</td><td>Comprendre ce qui marche, corriger ce qui ne marche pas et améliorer le jeu.</td></tr>
     <tr><td>Journaux techniques : adresse IP, type d'appareil et heures des requêtes, gardés par notre hébergeur pendant une durée limitée.</td><td>Sécurité et correction des bugs.</td></tr>
@@ -51,13 +51,13 @@
   <h2>Qui voit quoi</h2>
   <ul>
     <li><strong>Les joueurs de vos parties</strong> voient votre prénom, votre personnage, les cartes que vous jouez sur eux, vos preuves dans cette partie, vos réactions et vos points. Les preuves ne sont jamais publiques et ne sortent jamais de la partie à laquelle elles appartiennent.</li>
-    <li><strong>Nos prestataires</strong> traitent les données uniquement pour faire tourner Dibs, sous contrat : Supabase (base de données, stockage des fichiers, connexion, serveurs, hébergés dans l'Union européenne, région de Paris), Apple (Se connecter avec Apple, notifications, paiements), Google (Se connecter avec Google), RevenueCat (statut de l'abonnement Dibs+, États-Unis), Amplitude (analytique d'usage, États-Unis) et Vercel (ce site, États-Unis).</li>
+    <li><strong>Nos prestataires</strong> traitent les données uniquement pour faire tourner Dibs, sous contrat : Supabase (base de données, stockage des fichiers, connexion, serveurs, hébergés dans l'Union européenne, région de Paris), Apple (Se connecter avec Apple, notifications sur iPhone, paiements de l'App Store), Google (Se connecter avec Google, paiements de Google Play, Firebase Cloud Messaging pour les notifications sur Android), Expo (envoi des notifications, États-Unis), RevenueCat (statut de l'abonnement Dibs+, États-Unis), Amplitude (analytique d'usage, États-Unis) et Vercel (ce site, États-Unis).</li>
     <li><strong>Les autorités</strong>, seulement quand la loi l'exige.</li>
   </ul>
   <p>Nous ne vendons pas vos données personnelles et ne les partageons pas à des fins publicitaires.</p>
 
   <h2>Transferts hors de l'Union européenne</h2>
-  <p>Vos données de jeu et vos preuves sont stockées dans l'Union européenne (Supabase, région de Paris). RevenueCat, Amplitude, Vercel, Apple et Google peuvent traiter certaines données aux États-Unis. Ces transferts reposent sur les garanties prévues par le RGPD que ces prestataires proposent : le Data Privacy Framework UE-États-Unis lorsqu'ils y sont certifiés, ou les clauses contractuelles types de la Commission européenne.</p>
+  <p>Vos données de jeu et vos preuves sont stockées dans l'Union européenne (Supabase, région de Paris). RevenueCat, Amplitude, Expo, Vercel, Apple et Google peuvent traiter certaines données aux États-Unis. Ces transferts reposent sur les garanties prévues par le RGPD que ces prestataires proposent : le Data Privacy Framework UE-États-Unis lorsqu'ils y sont certifiés, ou les clauses contractuelles types de la Commission européenne.</p>
 
   <h2>Bases légales</h2>
   <ul>
@@ -80,7 +80,7 @@
   <p>Vous pouvez accéder à vos données, les rectifier, les exporter ou les effacer, vous opposer à leur utilisation ou la limiter, et retirer votre consentement. L'essentiel se fait dans l'app, depuis votre profil. Pour le reste, utilisez le <a href="/fr/support#contact">formulaire de contact</a> ; nous répondons sous 30 jours. Vous pouvez aussi déposer une réclamation auprès de la CNIL (cnil.fr) ou de l'autorité de protection des données de votre pays.</p>
 
   <h2>Supprimer votre compte</h2>
-  <p>Dans l'app, depuis votre profil. Toutes les étapes sur la page <a href="/fr/delete-account">supprimer votre compte</a>. Supprimer votre compte ne résilie pas un abonnement Dibs+ facturé par Apple : résiliez-le dans les Réglages de votre iPhone, puis votre nom, puis Abonnements.</p>
+  <p>Dans l'app, depuis votre profil. Toutes les étapes sur la page <a href="/fr/delete-account">supprimer votre compte</a>. Supprimer votre compte ne résilie pas un abonnement Dibs+ facturé par Apple ou Google Play : résiliez-le dans les Réglages de votre iPhone (votre nom, puis Abonnements) ou dans le Play Store (Paiements et abonnements, puis Abonnements).</p>
 
   <h2>Sécurité</h2>
   <p>Les données circulent chiffrées (HTTPS). Les preuves sont stockées dans un espace privé et ne sont servies qu'aux joueurs de leur partie. L'accès à la base de données est limité à ce que chaque joueur a le droit de voir.</p>
