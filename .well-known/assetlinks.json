@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mathieuaskamp.dibs",
+      "sha256_cert_fingerprints": [
+        "BA:D2:A6:6A:E6:CF:51:6E:1F:32:C4:B6:07:AD:45:FC:58:F1:44:7F:95:33:3F:EF:CB:90:D0:9E:C1:B6:FE:22",
+        "F8:BF:C2:D1:AF:11:AE:1A:9E:A0:2E:CB:DE:D3:D6:FF:80:87:FE:BA:94:4E:AC:78:63:05:3A:7F:7A:0A:57:10"
+      ]
+    }
+  }
+]

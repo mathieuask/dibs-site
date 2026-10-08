@@ -25,8 +25,8 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
   avec `page`, `source` (`?s=`, `utm_source` ou domaine d'origine) et `device` (ios, android, desktop).
 - Lien universel : `.well-known/apple-app-site-association` (équipe 9HZ6856XDA) ouvre l'app sur `/j/*`, `/j?c=` et
   `/app` si elle est installée ; la page ne s'affiche qu'aux autres. `vercel.json` redirige `/j/:code` vers `/j?c=:code` (une réécriture vers `j.html` ou `/j` donne 404 sur Vercel avec cleanUrls, testé le 07/10).
-- App Links Android (à venir) : `.well-known/assetlinks.json` pour `com.mathieuaskamp.dibs`, publié seulement avec les
-  empreintes SHA-256 du keystore (envoyées par le chef d'orchestre) ; l'en-tête JSON est déjà dans `vercel.json`.
+- App Links Android : `.well-known/assetlinks.json` pour `com.mathieuaskamp.dibs`, empreintes SHA-256 de la clé de signature
+  Google Play et de la clé d'upload EAS (Play Console, 08/10) ; servi en JSON par `vercel.json`, vérifié par `verify.sh`.
   Modèle : `[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app",
   "package_name":"com.mathieuaskamp.dibs","sha256_cert_fingerprints":["AA:BB:..."]}}]`.
 - QR de `/app?s=qr` : `img/qr-app.svg`, généré avec le paquet `qrcode` de l'app (à refaire si le domaine change).

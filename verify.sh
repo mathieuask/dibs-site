@@ -61,6 +61,15 @@ try:
 except Exception as e:
     errors.append(f'apple-app-site-association illisible : {e}')
 
+# App Links Android : JSON valide, paquet de l'app et empreintes SHA-256 au bon format.
+try:
+    al = json.loads((root / '.well-known/assetlinks.json').read_text())
+    tgt = al[0]['target']
+    if tgt['package_name'] != 'com.mathieuaskamp.dibs': errors.append('assetlinks.json : paquet inattendu')
+    if not all(re.fullmatch(r'([0-9A-F]{2}:){31}[0-9A-F]{2}', f) for f in tgt['sha256_cert_fingerprints']): errors.append('assetlinks.json : empreinte mal formée')
+except Exception as e:
+    errors.append(f'assetlinks.json illisible : {e}')
+
 size = sum(f.stat().st_size for f in root.rglob('*') if f.is_file() and '.git' not in f.parts)
 if size > 2_000_000: errors.append(f'site trop lourd : {size} octets')
 
