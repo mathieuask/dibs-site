@@ -7,7 +7,7 @@ dépendance, couleurs et police de l'app (`app/src/ui/theme.ts`). Textes en angl
 ## Harnais
 - `./verify.sh` : liens et ancres internes, repères non remplacés (`SUPPORT_ENDPOINT` dans contact.js), emoji, tirets
   cadratins, poids < 2 Mo. Vert obligatoire avant tout déploiement.
-- Aperçu local : configuration « site » de `~/Desktop/ember/.claude/launch.json` (port 8840, URL propres comme Vercel).
+- Aperçu local : configuration « site » de `~/Desktop/dibs/.claude/launch.json` (port 8840, URL propres comme Vercel).
 
 ## Français
 - Pages françaises dans `fr/` (accueil, aide, suppression, confidentialité, conditions), liens depuis la racine
